@@ -1,11 +1,14 @@
 fileFormatVersion: 2
 guid: 68ef351c985e5684094fd7f1e93dac7f
-timeCreated: 1521894275
-licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - clothComputeShader: {fileID: 7200000, guid: 45cc4076de2c188439f5fe22a395781c,
+      type: 3}
+  - clothMaterial: {fileID: 2100000, guid: d7e91d40eae9cf344964fe8598976168, type: 2}
+  - clothHandler: {instanceID: 0}
+  - sphereCollider: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

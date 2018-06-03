@@ -8,15 +8,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1816714041632276}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1431901665326370
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4429646261787584}
   m_Layer: 0
@@ -29,9 +29,9 @@ GameObject:
 --- !u!1 &1816714041632276
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4573495750729554}
   - component: {fileID: 114373776419719454}
@@ -46,7 +46,7 @@ GameObject:
 --- !u!4 &4429646261787584
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1431901665326370}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -59,11 +59,11 @@ Transform:
 --- !u!4 &4573495750729554
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816714041632276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.43, z: 0}
+  m_LocalPosition: {x: 0, y: 15.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4429646261787584}
@@ -73,7 +73,7 @@ Transform:
 --- !u!114 &114373776419719454
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816714041632276}
   m_Enabled: 1
@@ -82,26 +82,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clothComputeShader: {fileID: 7200000, guid: 45cc4076de2c188439f5fe22a395781c, type: 3}
-  count: 2048
+  count: 8192
   clothMaterial: {fileID: 2100000, guid: d7e91d40eae9cf344964fe8598976168, type: 2}
-  globalStiffness: 10
-  damping: 10
-  mass: 256
-  gravityMul: 1
+  globalStiffness: 20
+  damping: 1.9
+  mass: 0.1
+  gravityMul: 9
   clothHandler: {fileID: 4573495750729554}
   sphereCollider: {fileID: 0}
   structuralSpringVars:
-    damping: 10.47
-    stiffness: 87.1
+    damping: 1
+    stiffness: 1
   shearSpringVars:
-    damping: 20
-    stiffness: 30.56
+    damping: 1
+    stiffness: 1
   structuralBendingSpringVars:
-    damping: 20
-    stiffness: 87.1
+    damping: 1
+    stiffness: 1
   shearBendingSpringVars:
-    damping: 5
-    stiffness: 30.56
+    damping: 1
+    stiffness: 1
   printDebug: 0
   drawCloth: 1
   drawVelocities: 0
@@ -114,7 +114,7 @@ MonoBehaviour:
 --- !u!114 &114702087851671646
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816714041632276}
   m_Enabled: 0

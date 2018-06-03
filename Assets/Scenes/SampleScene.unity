@@ -226,7 +226,7 @@ MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 304767048}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -288,7 +288,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4573495750729554, guid: 60c93cb357c1a594e88c140b6153846d, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.43
+      value: 15.5
       objectReference: {fileID: 0}
     - target: {fileID: 4573495750729554, guid: 60c93cb357c1a594e88c140b6153846d, type: 2}
       propertyPath: m_LocalPosition.z
@@ -327,7 +327,72 @@ Prefab:
     - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
         type: 2}
       propertyPath: count
-      value: 4096
+      value: 8192
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: drawVelocities
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: drawStructuralSprings
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: mass
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: globalStiffness
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: damping
+      value: 1.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: shearBendingSpringVars.stiffness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: shearBendingSpringVars.damping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: structuralBendingSpringVars.stiffness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: structuralBendingSpringVars.damping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: shearSpringVars.stiffness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: shearSpringVars.damping
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: structuralSpringVars.stiffness
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: structuralSpringVars.damping
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c93cb357c1a594e88c140b6153846d, type: 2}

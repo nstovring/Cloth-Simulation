@@ -23,7 +23,7 @@ public class ClothSimulator : MonoBehaviour {
     [Delayed]
     [Range(0,100)]
     public float damping;
-    [Range(1f,1000)]
+    [Range(0.1f, 1f)]
     public float mass;
     public float gravityMul = 1f;
     public Transform clothHandler;
@@ -47,7 +47,6 @@ public class ClothSimulator : MonoBehaviour {
     // Use this for initialization
     void Start () {
         mainClothKernelHandler = clothComputeShader.FindKernel("CSMain");
-        //springKernelHandler = clothComputeShader.FindKernel("CSSprings");
         int particleStructSize = System.Runtime.InteropServices.Marshal.SizeOf(typeof(SpringHandler.particle));
         int springStructSize = System.Runtime.InteropServices.Marshal.SizeOf(typeof(SpringHandler.spring));
 
@@ -82,12 +81,12 @@ public class ClothSimulator : MonoBehaviour {
         {
             for (int y = 0; y < rows; y++)
             {
-                particles[y + x * rows].mass = mass / count;
+                particles[y + x * rows].mass = mass;
                 particles[y + x * rows].iD = y + x * rows;
-                particles[y + x * rows].position = transform.TransformPoint(new Vector3((x), 0, y));
+                particles[y + x * rows].position = transform.TransformPoint(new Vector3(x, 0, y));
                 particles[y + x * rows].isFixed = 0;
-                initialPositions[y + x * rows] = transform.position + transform.InverseTransformPoint(new Vector3((x), 0, y ));
-                AddSprings(x, y, rows, particles,ref springs);
+                initialPositions[y + x * rows] = transform.position + transform.InverseTransformPoint(new Vector3(x, 0, y ));
+                AddSprings(x, y, rows, particles, ref springs);
             }
         }
 
@@ -225,6 +224,7 @@ public class ClothSimulator : MonoBehaviour {
         clothComputeShader.SetFloat("mass", mass);
         clothComputeShader.SetFloat("gravityMul", gravityMul);
         clothComputeShader.SetVector("spherePos", sphereCollider.transform.position);
+        clothComputeShader.SetFloat("sphereRadius", sphereCollider.transform.lossyScale.y/2);
 
         for (int i = 0; i < solverSteps; i++)
         {
@@ -233,7 +233,6 @@ public class ClothSimulator : MonoBehaviour {
         }
 
         SpringHandler.particle[] ps = new SpringHandler.particle[count];
-
         SpringHandler.spring[] ss = new SpringHandler.spring[springCount];
         
         particleBuffer.GetData(ps);
