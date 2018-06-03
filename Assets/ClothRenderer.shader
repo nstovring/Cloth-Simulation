@@ -75,7 +75,7 @@ Shader "Hidden/ClothRenderer"
 				float4 nieghbourPos : TEXCOORD0;
 				float4 nieghbourPos2 : TEXCOORD1;
 				float4 nieghbourPos3 : TEXCOORD2;
-
+				int iD : TEXCOORD3;
 			};
 
 			float3 getNeighbourPos(int id, int offset, int count) {
@@ -98,12 +98,12 @@ Shader "Hidden/ClothRenderer"
 
 				int rowCount = sqrt(count);
 
-				o.pos = (float4(particleBuffer[id].position, 1));
+				o.pos = (float4(particleBuffer[id].position, id));
 
 				o.nieghbourPos = (float4(getNeighbourPos(id, rowCount, count), 1));
 				o.nieghbourPos2 = (float4(getNeighbourPos(id, 1, count), 1));
 				o.nieghbourPos3 = (float4(getNeighbourPos(id, rowCount+1, count), 1));
-
+				o.iD = id;
 				return o;
 			}
 
@@ -125,20 +125,30 @@ Shader "Hidden/ClothRenderer"
 			[maxvertexcount(6)]
 			void geom(point vs_out input[1], inout TriangleStream<gs_out> outStream)
 			{
+				int count = 16384;
+				int iD = input[0].pos.w; //y + x * rows
+
+				float rows = sqrt(count);
+				float y = (iD/rows)/count;
+				float x = (iD -(iD/rows))/count;
 				float dx = 0.1;
 				float dy = 0.1 * _ScreenParams.x / _ScreenParams.y;
 				gs_out output;
+
+
 				float3 normal = CalculateNormal(input[0].pos, input[0].nieghbourPos, input[0].nieghbourPos2);
 
-				output.pos = UnityObjectToClipPos(input[0].pos); output.uv = float2(0, 0); output.normal = normal; outStream.Append(output);
-				output.pos = UnityObjectToClipPos(input[0].nieghbourPos); output.uv = float2(1, 0); output.normal = normal; outStream.Append(output);
-				output.pos = UnityObjectToClipPos(input[0].nieghbourPos2); output.uv = float2(0, 0); output.normal = normal; outStream.Append(output);
+				output.pos = UnityObjectToClipPos(input[0].pos); output.uv = float2(x, y); output.normal = normal; outStream.Append(output);
+				output.pos = UnityObjectToClipPos(input[0].nieghbourPos); output.uv = float2(x+ 1, y); output.normal = normal; outStream.Append(output);
+				output.pos = UnityObjectToClipPos(input[0].nieghbourPos2); output.uv = float2(x, y); output.normal = normal; outStream.Append(output);
+				output.normal = normal;
 
 				normal = -CalculateNormal(input[0].nieghbourPos, input[0].nieghbourPos2, input[0].nieghbourPos3);
-				output.pos = UnityObjectToClipPos(input[0].nieghbourPos2); output.uv = float2(0, 0); output.normal = normal; outStream.Append(output);
-				output.pos = UnityObjectToClipPos(input[0].nieghbourPos); output.uv = float2(1, 0); output.normal = normal; outStream.Append(output);
-				output.pos = UnityObjectToClipPos(input[0].nieghbourPos3); output.uv = float2(1, 1); output.normal = normal; outStream.Append(output);
+				output.pos = UnityObjectToClipPos(input[0].nieghbourPos2); output.uv = float2(x, y); output.normal = normal; outStream.Append(output);
+				output.pos = UnityObjectToClipPos(input[0].nieghbourPos); output.uv = float2(x + 1, y); output.normal = normal; outStream.Append(output);
+				output.pos = UnityObjectToClipPos(input[0].nieghbourPos3); output.uv = float2(x+1, y+1); output.normal = normal; outStream.Append(output);
 				outStream.RestartStrip();
+				output.normal = normal;
 			}
 
  

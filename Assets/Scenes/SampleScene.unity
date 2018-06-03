@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 1526980366}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465794, g: 0.49641305, b: 0.57481766, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -321,22 +321,12 @@ Prefab:
       objectReference: {fileID: 304767052}
     - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
         type: 2}
-      propertyPath: gravityMul
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
       propertyPath: count
-      value: 8192
+      value: 16384
       objectReference: {fileID: 0}
     - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
         type: 2}
-      propertyPath: drawVelocities
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: drawStructuralSprings
+      propertyPath: globalStiffness
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
@@ -346,53 +336,48 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
         type: 2}
-      propertyPath: globalStiffness
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
       propertyPath: damping
-      value: 1.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: shearBendingSpringVars.stiffness
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: shearBendingSpringVars.damping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: structuralBendingSpringVars.stiffness
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: structuralBendingSpringVars.damping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: shearSpringVars.stiffness
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: shearSpringVars.damping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: structuralSpringVars.stiffness
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
         type: 2}
       propertyPath: structuralSpringVars.damping
-      value: 1
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: structuralSpringVars.stiffness
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: shearSpringVars.damping
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: shearSpringVars.stiffness
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: structuralBendingSpringVars.damping
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: structuralBendingSpringVars.stiffness
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: shearBendingSpringVars.damping
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
+        type: 2}
+      propertyPath: shearBendingSpringVars.stiffness
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c93cb357c1a594e88c140b6153846d, type: 2}
@@ -456,10 +441,10 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1526980365}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.1232089, y: -0.8669374, z: 0.4042595, w: 0.26422238}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: -146.1, z: 0}

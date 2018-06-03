@@ -6,7 +6,7 @@ using UnityEngine.Rendering;
 public class ClothSimulator : MonoBehaviour {
 
     public ComputeShader clothComputeShader;
-    public int count = 64;
+    public int count = 64;//32768//16384
     int mainClothKernelHandler;
     //int springKernelHandler;
 
@@ -112,10 +112,15 @@ public class ClothSimulator : MonoBehaviour {
         clothMaterial.SetInt("count", count);
 
         CommandBuffer cm = new CommandBuffer();
-        cm.DrawProcedural(Matrix4x4.identity, clothMaterial, -1, MeshTopology.Points, count);
-        Camera.main.AddCommandBuffer(CameraEvent.AfterSkybox, cm);
-    }
 
+        cm.DrawProcedural(Matrix4x4.identity, clothMaterial, -1, MeshTopology.Points, count);
+        //Camera.main.AddCommandBuffer(CameraEvent.AfterSkybox, cm);
+        Camera[] cams = UnityEditor.SceneView.GetAllSceneCameras();
+        for (int i = 0; i < cams.Length; i++)
+        {
+            cams[i].AddCommandBuffer(CameraEvent.AfterForwardOpaque, cm);
+        }
+    }
 
 
     void AddSprings(int x, int y, int rows, SpringHandler.particle[] particles,ref List<SpringHandler.spring> springs)
@@ -214,6 +219,7 @@ public class ClothSimulator : MonoBehaviour {
 
     int solverSteps = 16;
     void Update () {
+       
 
         if (clothHandler != null)
         {
