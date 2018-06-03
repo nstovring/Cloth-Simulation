@@ -51,6 +51,7 @@ static class SpringHandler
         return new Vector3(x / (float)rows, 0, y / (float)rows);
     }
 
+    //The Range x and Range y variables control how far away and in which direction this method should look for a particle
     public static spring GetSpring(int x, int y, int rows, out int connectedParticleIndex, int rangeX, int rangeY, ClothSimulator.SpringVariables vars, SpringType type)
     {
         spring Spring = new spring();

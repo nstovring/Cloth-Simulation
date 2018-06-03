@@ -49,58 +49,73 @@ bool IsValidSpring(int x)
 		return true;
 	return false;
 }
-
+//Executed on a single thread
 [numthreads(8,1,1)]
 void CSMain (uint3 id : SV_DispatchThreadID)
 {
+    //Read the current particle from the particle buffer
 	particle p = particles[id.x];
 	if (!(p.isFixed == 1)) {
+        //Define gravityForce
 		float3 gravity = float3(0, -9.8, 0) * gravityMul;
 		
 		//---------------------------------------------
+        //Read timeStep from CPU
 		float delta = deltaTime;
+        //Read current velocity
 		float3 velocity = p.velocity;
+        //Read current position
 		float3 position = p.position;
+        //Reset forces
 
 		float3 dampingForce = float3(0, 0, 0);
 		float3 springForce = float3(0, 0, 0);
-
+        //Iterate through all springs in particle
 		for (int i = 0; i < 16; i++)
 		{
 			if (IsValidSpring(p.springs[i])) {
+                //Read spring from spring buffer
 				spring s = springs[p.springs[i]];
+                //Read connected particles to the spring
                 particle b = particles[s.connectionB];
                 particle a = particles[s.connectionA];
+
+                //Reverse order of springs if current particle is not equal to connectionA
+                //Important as the direction of the springForce must be pointing towards the current particle
                 bool reversed = b.iD != p.iD;
                 if (reversed)
                 {
                     b = a;
                     a = p;
                 }
-
+                //Calculate hooks law and accumulate forces
                 dampingForce += globalDamping * (a.velocity - b.velocity) * s.damping;
                 springForce += -globalStiffness * (a.position - b.position) * (s.restLength - distance(b.position, a.position)) * s.stiffness;
             }
 		}
 
 		//Simple Sphere Collision
+        //Collision with single sphere in the scene is defined as a force pointing towards the particle from the spheres position.
         float sphereCollisionForce = 100;
         float3 c = distance(position + velocity * delta, spherePos) < sphereRadius + 0.54 ? Normalize(position + velocity * delta - spherePos) * (sphereCollisionForce - (distance(position + velocity * delta, spherePos))) : float3(0, 0, 0);
         //Plane Collision
         float3 cP = (position + velocity * delta).y < 0.1 ? float3(0, 1, 0) * (1 - (position + velocity * delta).y) : float3(0, 0, 0);
-
+        //Sum up forces
         float3 force = dampingForce + springForce + mass * gravity +c + cP;
-	
+		//Calculate acceleration
         float3 acceleration = force / mass;
+        //Integrate velocity
         velocity = velocity + acceleration * delta ;
+        //Integrate position
 		position = position + velocity * delta;
 		//--------------------------------------------
-		
+		//Save velocity and position back into buffer
 		particles[id.x].position = position;
 		particles[id.x].velocity = velocity;
 
 	}
 	else {
+        //Fixed particles do no have any forces acting on them and simply move towards fixedPos offset by their initial positions
 		particles[id.x].position = initialPositions[id.x] + fixedPos;
 		particles[id.x].velocity = p.velocity;
 	}

@@ -76,7 +76,7 @@ public class ClothSimulator : MonoBehaviour {
             particles[i].shearBendingSprings.z = -1;
             particles[i].shearBendingSprings.w = -1;
         }
-
+        //Double for loop intializes all values within particle array
         for (int x = 0; x < collumns; x++)
         {
             for (int y = 0; y < rows; y++)
@@ -86,6 +86,7 @@ public class ClothSimulator : MonoBehaviour {
                 particles[y + x * rows].position = transform.TransformPoint(new Vector3(x, 0, y));
                 particles[y + x * rows].isFixed = 0;
                 initialPositions[y + x * rows] = transform.position + transform.InverseTransformPoint(new Vector3(x, 0, y ));
+                //Add springs get the current index and finds every other particle which should connect to this one with a spring
                 AddSprings(x, y, rows, particles, ref springs);
             }
         }
@@ -114,7 +115,7 @@ public class ClothSimulator : MonoBehaviour {
         CommandBuffer cm = new CommandBuffer();
 
         cm.DrawProcedural(Matrix4x4.identity, clothMaterial, -1, MeshTopology.Points, count);
-        //Camera.main.AddCommandBuffer(CameraEvent.AfterSkybox, cm);
+        Camera.main.AddCommandBuffer(CameraEvent.AfterSkybox, cm);
         Camera[] cams = UnityEditor.SceneView.GetAllSceneCameras();
         for (int i = 0; i < cams.Length; i++)
         {
@@ -122,9 +123,20 @@ public class ClothSimulator : MonoBehaviour {
         }
     }
 
+    struct int2
+    {
+        public int2(params int[] args)
+        {
+            x = args[0];
+            y = args[1];
+        }
+        public int x;
+        public int y;
+    }
 
     void AddSprings(int x, int y, int rows, SpringHandler.particle[] particles,ref List<SpringHandler.spring> springs)
     {
+        //Get Structural springs
         if (y < rows - 1)
         {
             particles[y + x * rows].structuralSprings.x = springs.Count;
@@ -132,7 +144,7 @@ public class ClothSimulator : MonoBehaviour {
             springs.Add(SpringHandler.GetSpring(x, y, rows,out connectedParticleIndex, 0,1, structuralSpringVars, SpringHandler.SpringType.StructuralSpring));
             particles[connectedParticleIndex].structuralSprings.w = springs.Count-1;
         }
-
+        
         if (x < rows -1)
         {
             particles[y + x * rows].structuralSprings.y = springs.Count;
@@ -140,7 +152,7 @@ public class ClothSimulator : MonoBehaviour {
             springs.Add(SpringHandler.GetSpring(x, y, rows,out connectedParticleIndex, 1, 0, structuralSpringVars, SpringHandler.SpringType.StructuralSpring));
             particles[connectedParticleIndex].structuralSprings.z = springs.Count-1;
         }
-
+        //Get Shear Springs
         if (y < rows - 1 && x < rows - 1)
         {
             particles[y + x * rows].shearSprings.x = springs.Count;
