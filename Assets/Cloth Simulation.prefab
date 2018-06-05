@@ -63,7 +63,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1816714041632276}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 15.5, z: 0}
+  m_LocalPosition: {x: 0, y: 100, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4429646261787584}
@@ -82,26 +82,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clothComputeShader: {fileID: 7200000, guid: 45cc4076de2c188439f5fe22a395781c, type: 3}
-  count: 8192
+  count: 16384
   clothMaterial: {fileID: 2100000, guid: d7e91d40eae9cf344964fe8598976168, type: 2}
-  globalStiffness: 20
-  damping: 1.9
+  globalStiffness: 10
+  damping: 5
   mass: 0.1
   gravityMul: 9
   clothHandler: {fileID: 4573495750729554}
   sphereCollider: {fileID: 0}
   structuralSpringVars:
-    damping: 1
-    stiffness: 1
+    damping: 0.6
+    stiffness: 4
   shearSpringVars:
-    damping: 1
-    stiffness: 1
+    damping: 0.6
+    stiffness: 4
   structuralBendingSpringVars:
-    damping: 1
-    stiffness: 1
+    damping: 0.8
+    stiffness: 2
   shearBendingSpringVars:
-    damping: 1
-    stiffness: 1
+    damping: 0.8
+    stiffness: 2
   printDebug: 0
   drawCloth: 1
   drawVelocities: 0

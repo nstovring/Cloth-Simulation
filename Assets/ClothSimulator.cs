@@ -116,11 +116,13 @@ public class ClothSimulator : MonoBehaviour {
 
         cm.DrawProcedural(Matrix4x4.identity, clothMaterial, -1, MeshTopology.Points, count);
         Camera.main.AddCommandBuffer(CameraEvent.AfterSkybox, cm);
+#if UNITY_EDITOR
         Camera[] cams = UnityEditor.SceneView.GetAllSceneCameras();
         for (int i = 0; i < cams.Length; i++)
         {
             cams[i].AddCommandBuffer(CameraEvent.AfterForwardOpaque, cm);
         }
+#endif
     }
 
     struct int2

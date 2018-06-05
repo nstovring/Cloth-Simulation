@@ -301,7 +301,7 @@ GameObject:
   m_Layer: 0
   m_Name: TargetB
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -362,66 +362,6 @@ Prefab:
       propertyPath: sphereCollider
       value: 
       objectReference: {fileID: 304767052}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: count
-      value: 16384
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: globalStiffness
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: mass
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: damping
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: structuralSpringVars.damping
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: structuralSpringVars.stiffness
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: shearSpringVars.damping
-      value: 0.6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: shearSpringVars.stiffness
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: structuralBendingSpringVars.damping
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: structuralBendingSpringVars.stiffness
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: shearBendingSpringVars.damping
-      value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 114373776419719454, guid: 60c93cb357c1a594e88c140b6153846d,
-        type: 2}
-      propertyPath: shearBendingSpringVars.stiffness
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60c93cb357c1a594e88c140b6153846d, type: 2}
   m_IsPrefabAsset: 0
@@ -502,7 +442,7 @@ GameObject:
   m_Layer: 0
   m_Name: TargetA
   m_TagString: Untagged
-  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
