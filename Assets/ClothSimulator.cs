@@ -170,38 +170,39 @@ public class ClothSimulator : MonoBehaviour {
             springs.Add(SpringHandler.GetSpring(x, y, rows, out connectedParticleIndex, -1, 1, shearSpringVars, SpringHandler.SpringType.ShearSpring));
             particles[connectedParticleIndex].shearSprings.w = springs.Count - 1;
         }
-        
+
         //Get shearBendingSprings
-        if (y < rows - 2 && x < rows - 2)
+        int BendRange = 2;
+        if (y < rows - BendRange && x < rows - BendRange)
         {
             particles[y + x * rows].shearBendingSprings.x = springs.Count;
             int connectedParticleIndex;
-            springs.Add(SpringHandler.GetSpring(x, y, rows, out connectedParticleIndex,2, 2,shearBendingSpringVars, SpringHandler.SpringType.ShearBendingSpring));
+            springs.Add(SpringHandler.GetSpring(x, y, rows, out connectedParticleIndex, BendRange, BendRange, shearBendingSpringVars, SpringHandler.SpringType.ShearBendingSpring));
             particles[connectedParticleIndex].shearBendingSprings.z = springs.Count - 1;
         }
         
-        if (y < rows - 2 && x > 1)
+        if (y < rows - BendRange && x > BendRange - 1)
         {
             particles[y + x * rows].shearBendingSprings.y = springs.Count;
             int connectedParticleIndex;
-            springs.Add(SpringHandler.GetSpring(x, y, rows, out connectedParticleIndex, -2, 2, shearBendingSpringVars, SpringHandler.SpringType.ShearBendingSpring));
+            springs.Add(SpringHandler.GetSpring(x, y, rows, out connectedParticleIndex, -BendRange, BendRange, shearBendingSpringVars, SpringHandler.SpringType.ShearBendingSpring));
             particles[connectedParticleIndex].shearBendingSprings.w = springs.Count - 1;
         }
         
         //Get structutralBendingSprings
-        if (y < rows - 2)
+        if (y < rows - BendRange)
         {
             particles[y + x * rows].structutralBendingSprings.x = springs.Count;
             int connectedParticleIndex;
-            springs.Add(SpringHandler.GetSpring(x, y, rows, out connectedParticleIndex, 0, 2, structuralBendingSpringVars, SpringHandler.SpringType.StructuralBendingSpring));
+            springs.Add(SpringHandler.GetSpring(x, y, rows, out connectedParticleIndex, 0, BendRange, structuralBendingSpringVars, SpringHandler.SpringType.StructuralBendingSpring));
             particles[connectedParticleIndex].structutralBendingSprings.z = springs.Count - 1;
         }
         
-        if (x < rows - 2)
+        if (x < rows - BendRange)
         {
             particles[y + x * rows].structutralBendingSprings.y = springs.Count;
             int connectedParticleIndex;
-            springs.Add(SpringHandler.GetSpring(x, y, rows, out connectedParticleIndex, 2, 0, structuralBendingSpringVars, SpringHandler.SpringType.StructuralBendingSpring));
+            springs.Add(SpringHandler.GetSpring(x, y, rows, out connectedParticleIndex, BendRange, 0, structuralBendingSpringVars, SpringHandler.SpringType.StructuralBendingSpring));
             particles[connectedParticleIndex].structutralBendingSprings.w = springs.Count - 1;
         }
 

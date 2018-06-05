@@ -96,7 +96,7 @@ void CSMain (uint3 id : SV_DispatchThreadID)
 
 		//Simple Sphere Collision
         //Collision with single sphere in the scene is defined as a force pointing towards the particle from the spheres position.
-        float sphereCollisionForce = 100;
+        float sphereCollisionForce = 1000;
         float3 c = distance(position + velocity * delta, spherePos) < sphereRadius + 0.54 ? Normalize(position + velocity * delta - spherePos) * (sphereCollisionForce - (distance(position + velocity * delta, spherePos))) : float3(0, 0, 0);
         //Plane Collision
         float3 cP = (position + velocity * delta).y < 0.1 ? float3(0, 1, 0) * (1 - (position + velocity * delta).y) : float3(0, 0, 0);

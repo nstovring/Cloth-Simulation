@@ -84,7 +84,7 @@ MonoBehaviour:
   clothComputeShader: {fileID: 7200000, guid: 45cc4076de2c188439f5fe22a395781c, type: 3}
   count: 16384
   clothMaterial: {fileID: 2100000, guid: d7e91d40eae9cf344964fe8598976168, type: 2}
-  globalStiffness: 10
+  globalStiffness: 4
   damping: 5
   mass: 0.1
   gravityMul: 9
